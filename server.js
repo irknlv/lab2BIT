@@ -71,6 +71,9 @@ app.get('/', (req, res) => {
 app.get('/user/:id/transactions/:date', (req, res) => {
     const userId = parseInt(req.params.id);
     const date = req.params.date;
+    const user1 = users.filter((item) => {
+        return item.id == req.params.id;
+    });
     const transactions = [
         { id: 1, userId: 1, amount: '100', date: '2023-01-01' },
         { id: 2, userId: 2, amount: 50, date: '2023-01-02' },
@@ -127,7 +130,7 @@ app.get('/user/:id/transactions/:date', (req, res) => {
       return transaction.userId === userId && transaction.date === date;
     });
     
-    res.render('table',{user: userId, trs:userTransactions});
+    res.render('table',{user: user1, trs:userTransactions});
 });
 app.get('/login/:login', (req, res) => {
     const { login } = req.params;
