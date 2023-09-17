@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #d8dadc;
+            color: black;
+            text-align: center;
+            padding: 5px;
+        }
+        h1{
+            font-size: 20px;
+        }
+
+        .profile-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            width: 400px;
+        }
+
+        .profile-welcome {
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        .date-input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .date-input:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+
+        .view-transactions-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .view-transactions-button:hover {
+            background-color: #0056b3;
+        }
+
+        .transactions-table {
+            width: 70%;
+            margin: 100px auto;
+            border-collapse: collapse;
+        }
+
+        .transactions-table th, .transactions-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .transactions-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Irkenaliyev's Bank</h1>
+    </header>
+
+    <table class="transactions-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Пользователь</th>
+                <th>Сумма</th>
+                <th>Действие</th>
+                <th>Дата</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%
+                for(let i of trs){
+            %>            
+                <tr>
+                    <td><%=i.id%></td>
+                    <td><%=i.userId%></td>
+                    <td>
+                        <%
+                            if(i.amount<0){
+                        %>
+                                <%=i.amount*-1%>
+                        <%        
+                            } else {
+                        %>
+                                <%=i.amount%>
+                        <%        
+                            }
+                        %>
+                    </td>
+                    <td>
+                        <%
+                            if(i.amount>0){
+                        %>
+                                Пополнение
+                        <%        
+                            } else {
+                        %>
+                                Снятие
+                        <%        
+                            }
+                        %>
+                    </td>
+                    <td><%=i.date%></td>
+                </tr>
+            <%
+            }
+            %>
+            
+        </tbody>
+    </table>
+</body>
+</html>

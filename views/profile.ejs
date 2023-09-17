@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль пользователя</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #d8dadc;
+            color: black;
+            text-align: center;
+            padding: 5px;
+        }
+        h1{
+            font-size: 20px;
+        }
+
+        .profile-container {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            width: 400px;
+        }
+
+        .profile-welcome {
+            font-size: 18px;
+            margin-top: 0;
+        }
+
+        .date-input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .date-input:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+
+        .view-transactions-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .view-transactions-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Irkenaliyev's Bank</h1>
+    </header>
+    <div class="profile-container">
+        <p class="profile-welcome">Рады видеть вас, <%=user.name%>!</p>
+        <input type="date" class="date-input" id="transaction-date" placeholder="Дата">
+        <button class="view-transactions-button" data-user-id="<%=user.id%>">Посмотреть транзакции</button>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const viewTransactionsButton = document.querySelector('.view-transactions-button');
+        const transactionDateInput = document.querySelector('#transaction-date');
+
+        viewTransactionsButton.addEventListener('click', () => {
+            const userId = viewTransactionsButton.getAttribute('data-user-id');
+            const date = transactionDateInput.value;
+            redirectToTransactions(userId, date);
+        });
+
+        transactionDateInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                const userId = viewTransactionsButton.getAttribute('data-user-id');
+                const date = transactionDateInput.value;
+                redirectToTransactions(userId, date);
+            }
+        });
+
+        function redirectToTransactions(userId, date) {
+            window.location.href = `/user/${userId}/transactions/${date}`;
+        }
+    });
+</script>
+</html>

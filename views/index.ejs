@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма для ввода логина</title>
+    <style>
+         body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #d8dadc;
+            color: black;
+            text-align: center;
+            padding: 5px;
+        }
+        h1{
+            font-size: 20px;
+        }
+        .login-form {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            width: 400px;
+        }
+
+        .login-form h2 {
+            margin-top: 0;
+        }
+
+        .login-input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-input:focus {
+            outline: none;
+            border-color: #007BFF;
+        }
+
+        .login-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Irkenaliyev's Bank</h1>
+    </header>
+    <div class="login-form">
+        <h2>Введите логин</h2>
+        <input type="text" class="login-input" placeholder="Логин">
+        <button class="login-button">Войти</button>
+    </div>
+</body>
+</html>
+<script>
+    $(document).ready(function() {
+        $('.login-input').keydown(function(event) {
+            if (event.keyCode === 13) {
+                const login = $('.login-input').val();
+                if (login.trim() !== '') {
+                    window.location.href = '/login/' + encodeURIComponent(login);
+                } else {
+                    alert('Введите логин');
+                }
+            }
+        });
+
+        $('.login-button').click(function() {
+            const login = $('.login-input').val();
+            if (login.trim() !== '') {
+                window.location.href = '/login/' + encodeURIComponent(login);
+            } else {
+                alert('Введите логин');
+            }
+        });
+    });
+</script>
