@@ -6,10 +6,10 @@ const ejs = require('ejs');
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 const users = [
-  { id: 1, name: 'Иркеналиев Алиби', login: 'user1' },
-  { id: 2, name: 'Иванов Иван', login: 'user2' },
-  { id: 3, name: 'Петров Василий', login: 'user3' },
-  { id: 4, name: 'Волков Дмитрий', login: 'user4' },
+  { id: 1, name: 'Зыков Тимофей', login: 'user1' },
+  { id: 2, name: 'Касымов Данияр', login: 'user2' },
+  { id: 3, name: 'Байжуменов Алишер', login: 'user3' },
+  { id: 4, name: 'Карабассов Ануар', login: 'user4' },
 ];
 
 const transactions = [

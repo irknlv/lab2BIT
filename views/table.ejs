@@ -11,8 +11,8 @@
         }
 
         header {
-            background-color: #d8dadc;
-            color: black;
+            background-color: #019ba3;
+            color: white;
             text-align: center;
             padding: 5px;
         }
@@ -61,26 +61,27 @@
             background-color: #0056b3;
         }
 
-        .transactions-table {
+        .transactions-table{
             width: 70%;
             margin: 100px auto;
             border-collapse: collapse;
         }
 
         .transactions-table th, .transactions-table td {
-            border: 1px solid #ccc;
+            border: 1px solid #5a5959;
             padding: 8px;
             text-align: center;
         }
 
         .transactions-table th {
-            background-color: #f2f2f2;
+            color: white;
+            background-color: #5a5959;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Irkenaliyev's Bank</h1>
+        <h1>SnowCrypto</h1>
     </header>
 
     <table class="transactions-table">
@@ -88,7 +89,7 @@
             <tr>
                 <th>ID</th>
                 <th>Пользователь</th>
-                <th>Сумма</th>
+                <th>Количество коинов</th>
                 <th>Действие</th>
                 <th>Дата</th>
             </tr>
@@ -104,11 +105,11 @@
                         <%
                             if(i.amount<0){
                         %>
-                                <%=i.amount*-1%>
+                                <%=i.amount*-1%> BTC
                         <%        
                             } else {
                         %>
-                                <%=i.amount%>
+                                <%=i.amount%> BTC
                         <%        
                             }
                         %>
@@ -117,11 +118,11 @@
                         <%
                             if(i.amount>0){
                         %>
-                                Пополнение
+                                Покупка
                         <%        
                             } else {
                         %>
-                                Снятие
+                                Продажа
                         <%        
                             }
                         %>
